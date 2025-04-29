@@ -17,8 +17,8 @@ const fetchBooks = () => {
         card.className = "card";
 
         const img = document.createElement("img");
-        img.style.height = "100%";
-        img.className = "card-img-top";
+        img.style.height = "400px";
+        img.className = "card-img-top object-fit-cover";
         img.src = book.img;
 
         const cardBody = document.createElement("div");
@@ -30,11 +30,13 @@ const fetchBooks = () => {
 
         const cardPrice = document.createElement("p");
         cardPrice.className = "card-text";
-        cardPrice.innerText = book.price;
+        cardPrice.innerText = "£" + book.price;
 
         const cardBtn = document.createElement("a");
         cardBtn.href = "#";
-        cardBtn.className = "btn btn-primary";
+        cardBtn.className = "btn text-white";
+        cardBtn.style.backgroundColor = "#A419A4";
+        cardBtn.style.borderColor = "#5B0870";
         cardBtn.innerText = "Scarta";
 
         col.appendChild(card);
@@ -44,6 +46,10 @@ const fetchBooks = () => {
         cardBody.appendChild(cardPrice);
         cardBody.appendChild(cardBtn);
         row.appendChild(col);
+
+        cardBtn.onclick = function (e) {
+          e.target.closest(".card").remove();
+        };
       });
     })
     .catch((error) => console.log(error));
